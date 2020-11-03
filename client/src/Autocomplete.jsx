@@ -18,7 +18,7 @@ class Autocomplete extends React.Component {
     if(input === ""){
      filtered = [];
     } else {
-     filtered = options.filter((item) =>  item.toLowerCase().indexOf(input.toLowerCase()) !== -1)
+     filtered = options.filter((item) =>  item.toLowerCase()[0] === input.toLowerCase()[0] && item.toLowerCase().indexOf(input.toLowerCase()) !== -1)
     }
     this.setState({
       value: input,

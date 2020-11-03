@@ -19,7 +19,7 @@ class App extends React.Component {
     let result = [];
     axios({
       method: 'get',
-      url: 'http://localhost:3000/api/options',
+      url: '/api/options',
     })
       .then((response) => {
         for (let i = 0; i < response.data.length; i++){

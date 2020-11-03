@@ -29,7 +29,10 @@ class App extends React.Component {
         this.setState({
           options: result
         });
-      });
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
   }
 
   render (){

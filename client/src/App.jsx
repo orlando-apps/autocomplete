@@ -1,0 +1,44 @@
+import React from 'react'
+import axios from 'axios'
+import Autocomplete from './Autocomplete.jsx'
+
+
+class App extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      options:[]
+    }
+  }
+
+  componentDidMount(){
+    this.fetchOptions()
+  }
+
+  fetchOptions(){
+    let result = [];
+    axios({
+      method: 'get',
+      url: 'http://localhost:3000/api/options',
+    })
+      .then((response) => {
+        for (let i = 0; i < response.data.length; i++){
+          let obj = response.data[i];
+          result.push(obj.type)
+        }
+        this.setState({
+          options: result
+        });
+      });
+  }
+
+  render (){
+    return (
+      <>
+      <Autocomplete options = {this.state.options} />
+      </>
+    )
+  }
+}
+
+export default App
